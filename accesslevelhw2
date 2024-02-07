@@ -1,0 +1,43 @@
+package accesslevel;
+
+/**
+ *
+ * @author fernandadelafuente
+ */
+public class AccessLevel 
+{
+
+   
+    public static String can_cannot_access(int[] rights, int minPermission) 
+    {
+        StringBuffer result = new StringBuffer();
+        
+        for (int the_access_level:rights) 
+        {
+            if (the_access_level >= minPermission) 
+            {
+                result.append('A'); 
+            } else {
+                result.append('D'); 
+            }
+        }
+        
+        return result.toString();
+    }
+    
+    public static void main(String[] args) 
+    {
+
+        int[] rightsF = {0, 1, 2, 3, 4, 5};
+        System.out.println(can_cannot_access(rightsF, 2)); //will return: "DDAAAA"
+        
+        int[] rightsD = {5, 3, 2, 10, 0};
+        System.out.println(can_cannot_access(rightsD, 20)); //will return: "DDDDD"
+        
+        int[] rightsL = {};
+        System.out.println(can_cannot_access(rightsL, 20)); //will return: ""
+        
+        int[] rightsR = {34, 78, 9, 52, 11, 1};
+        System.out.println(can_cannot_access(rightsR, 49)); //will return: "DADADD"
+    }
+}
